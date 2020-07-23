@@ -1,0 +1,93 @@
+<div class="col-md-6 offset-md-3">
+    <div class="card" style="float:left">
+        <div class="card-header">
+            <h1>Pacientes</h1>
+        </div>
+        <br>
+        <div class="card-body">
+            {{#if usuario}}
+            <ul class="list-group">
+                {{#each usuario}}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{nombre}} ||
+                    {{correo}} || 
+                    {{edad}} ||
+                    {{genero}} ||
+                    {{idHistorial}}  
+                    <a href="/delete-usuario/{{@key}}" class="btn btn-danger">Borrar</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{else}}
+                <p>No hay Usuarios Ingresados.</p>
+            {{/if}}
+        </div>
+        <br>
+        </div>
+    <div class="card" style="float:right">
+        <div class="card-header">
+            <h1>Historial</h1>
+        </div>
+        <br>
+        <div class="card-body">
+            {{#if historial}}
+            <ul class="list-group">
+                {{#each historial}}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{hora}} ||
+                    {{temperatura}}  
+                    <a href="/delete-historial/{{@key}}" class="btn btn-danger">Borrar</a>
+                </li>
+                {{/each}}
+            </ul>
+            {{else}}
+                <p>No hay Historial registrado.</p>
+            {{/if}}
+        </div>
+        <br>
+        </div>
+       <br>
+    <div class="card" style="float:right">
+        <div class="card-footer">
+            <form action="/new-historial" method="POST">
+                <div class="form-group">
+                    <input type="text" name="hora" placeholder="Hora " class="form-control" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="temperatura" placeholder="Temperatura" class="form-control">
+                </div>
+                <button class="btn btn-primary btn-block">
+                    Agregar
+                </button>
+            </form>
+        </div>
+    </div>
+        
+    <div class="card" style="float:left">
+        <div class="card-footer">
+            <form action="/new-usuario" method="POST">
+                <div class="form-group">
+                    <input type="text" name="nombre" placeholder="Nombre" class="form-control" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="correo" placeholder="Correo" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Contraseña" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="edad" placeholder="Edad" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="genero" placeholder="Genero" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="idHistorial" placeholder="ID del Historial" class="form-control">
+                </div>
+                <button class="btn btn-primary btn-block">
+                    Agregar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
